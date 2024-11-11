@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="public/weather.ico" type="image/x-icon">
+    <link rel="stylesheet" href="component/styles.css">
+    <title>Cuaca Sekarang</title>
+</head>
+<body>
+    <div class="wrapper-weather flex-column">
+        <div class="weather-content flex-column">
+            <div class="location flex-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="city"></span>
+            </div>
+            <div class="weather-info flex-row">
+                <div class="icon flex-row">
+                    <img id="icon-weather" alt="Weather Icon">
+                </div>
+                <div class="info flex-column">
+                    <span id="date"></span>
+                    <span id="temp"></span>
+                    <span id="weather"></span>
+                </div>
+            </div>
+            <div class="weather-info-more flex-column">
+                <div class="weather-info-more-top flex-row">
+                    <div class="air flex-row">
+                        <i class="fas fa-fan"></i>
+                        <div class="air-info flex-column">
+                            <span id="air"></span>
+                            <span>Kecepatan Angin</span>
+                        </div>
+                    </div>
+                    <div class="uv flex-row">
+                        <i class="fas fa-sun"></i>
+                        <div class="uv-info flex-column">
+                            <span id="uv"></span>
+                            <span>Indeks UV</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-info-more-bottom flex-row">
+                    <div class="pressure flex-row">
+                        <i class="fas fa-gauge-high"></i>
+                        <div class="pressure-info flex-column">
+                            <span id="pressure"></span>
+                            <span>Tekanan Udara</span>
+                        </div>
+                    </div>
+                    <div class="humidity flex-row">
+                        <i class="fas fa-tint"></i>
+                        <div class="humidity-info flex-column">
+                            <span id="humidity"></span>
+                            <span>Kelembaban</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="component/main.js"></script>
+    <footer id="footer">&copy; 2024 Aang Solihin. All right reserved.</footer>
+</body>
+</html>
