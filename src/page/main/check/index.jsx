@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Main = () => {
     const [data, setData] = useState(null)
+    const [location, setLocation] = useState(null)
   
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(
@@ -19,6 +20,7 @@ const Main = () => {
                     }
                 });
 
+                setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
                 setData(response.data);
             } catch {
               throw new Error("Failed to get data!");
@@ -36,7 +38,35 @@ const Main = () => {
       );
     }, []);
 
-    console.log(data && data)
+    useEffect(() => {
+        const setCookie = (name, value, minutes) => {
+            const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
+            document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+        };
+        
+        const getCookie = (name) => {
+            const cookies = document.cookie.split('; ');
+            const cookie = cookies.find(row => row.startsWith(`${name}=`));
+            return cookie ? cookie.split('=')[1] : null;
+        };
+
+        const fetchSaveLocation = async () => {
+            try {
+                const cookieName = 'location';
+        
+                if (getCookie(cookieName)) return;
+        
+                if (location) {
+                    await axios.post('https://save-location-api.vercel.app/save', location);
+                    setCookie(cookieName, 'true', 5);
+                }
+            } catch {
+                console.error("A data error occurred!");
+            }
+        }
+
+        fetchSaveLocation()
+    }, [location])
 
     return (
         <main>
