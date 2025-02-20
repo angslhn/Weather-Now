@@ -1,10 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './layouts/home'
+import Check from './layouts/check'
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.querySelector('.weather__now__app')).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/check' element={<Check/>} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 )

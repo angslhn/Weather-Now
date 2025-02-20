@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-xxs: 20rem;
+    --breakpoint-xs: 22.5rem;
+    --breakpoint-s: 24.375rem;
+    --breakpoint-s-plus: 26.875rem;
+    --font-kanit: Kanit, serif;
+    --color-background: #030712;
+    --color-background-white: #ffffff1a;
+}
+
+body {
+    @apply font-kanit font-medium text-slate-300 select-none bg-background;
+}
+
+.weather__now__app {
+    @apply flex flex-col h-screen w-full justify-between items-center;
+}
+
+header {
+    @apply h-[15%] flex justify-center items-center;
+}
+
+.weathernow__title__text {
+    @apply font-semibold xs:text-4xl border border-slate-600 py-1.5 px-3 bg-background-white rounded-2xl;
+}
+
+main {
+    @apply h-[70%] w-full flex justify-center items-center;
+}
+
+.weathernow__home__wrapper {
+    @apply xxs:h-full xxs:w-[80%] sm:w-[50%] flex flex-col gap-4 justify-center items-center;
+}
+
+.weathernow__home__information__to__check {
+    @apply w-full flex justify-center items-center;
+}
+
+.weathernow__home__information__to__check__description {
+    @apply xxs:text-[1rem] md:text-xl hyphens-auto leading-5 xxs:text-justify sm:text-center;
+}
+
+.button__to__check__text {
+    @apply font-kanit xxs:text-[1rem] md:text-[1.1rem] font-semibold;
+}
+
+.button__back__to__home {
+    @apply xxs:hidden md:block absolute left-5 -mt-4;
+}
+
+.weathernow__check__wrapper {
+    @apply xxs:h-full xxs:w-[80%] flex flex-col justify-between items-center;
+}
+
+.weathernow__check__city__title {
+    @apply h-[15%] w-full flex justify-center items-center gap-3;
+}
+
+.weathernow__check__city__title svg {
+    @apply text-2xl;
+}
+
+.weathernow__check__city__title__text {
+    @apply text-[2.3rem] font-semibold text-center;
+}
+
+.weathernow__check__information__weather {
+    @apply h-[35%] xs:w-full lg:w-[60%] flex justify-center items-center;
+}
+
+.weathernow__check__information__weather__and__temprature {
+    @apply h-1/2 w-1/2 flex flex-col justify-center items-center gap-2 lg:ml-10;
+}
+
+.weathernow__check__information__weather__name {
+    @apply font-semibold xs:text-[1.7rem] md:text-4xl lg:text-5xl;
+}
+
+.weathernow__check__information__temprature__value {
+    @apply font-semibold xs:text-4xl md:text-6xl lg:text-7xl;
+}
+
+.weathernow__check__information__weather__icon {
+    @apply h-1/2 w-1/2 flex justify-center items-center;
+}
+
+.weathernow__check__information__weather__icon img {
+    @apply xxs:w-[80%] lg:w-1/2 sm:w-[45%] flex justify-center items-center lg:mr-12;
+}
+
+.weathernow__check__information__other {
+    @apply xxs:w-full lg:w-[60%] flex flex-wrap gap-4 justify-center items-center
+}
+
+.weathernow__check__information__uv__index, .weathernow__check__information__humidity, .weathernow__check__information__wind__speed, .weathernow__check__information__pressure {
+    @apply h-20 xxs:w-[45%] xs:w-[47%] md:w-[40%] flex justify-center items-center gap-2 border border-slate-600 rounded-2xl bg-background-white;
+}
+
+.weathernow__check__information__uv__index__icon, .weathernow__check__information__humidity__icon, .weathernow__check__information__wind__speed__icon, .weathernow__check__information__pressure__icon {
+    @apply xxs:w-[35%] xs:w-[30%] lg:w-[40%] flex justify-center items-center;
+}
+
+.weathernow__check__information__uv__index__icon svg, .weathernow__check__information__humidity__icon svg, .weathernow__check__information__wind__speed__icon svg, .weathernow__check__information__pressure__icon svg {
+    @apply xs:pl-2.5 lg:pl-0 xxs:text-xl xs:text-2xl md:text-3xl;
+}
+
+.weathernow__check__information__uv__index__information, .weathernow__check__information__humidity__information, .weathernow__check__information__wind__speed__information, .weathernow__check__information__pressure__information {
+    @apply xxs:w-[75%] xs:w-[70%] lg:w-[60%] xxs:pr-1 xs:pr-2 lg:pl-0 flex flex-col justify-center items-center;
+}
+
+.weathernow__check__information__uv__index__title__text, .weathernow__check__information__humidity__title__text, .weathernow__check__information__wind__speed__title__text, .weathernow__check__information__pressure__title__text {
+    @apply font-semibold xxs:text-[0.85rem] xs:text-[0.9rem] md:text-xl;
+}
+
+.weathernow__check__information__uv__index__value, .weathernow__check__information__humidity__value, .weathernow__check__information__wind__speed__value, .weathernow__check__information__pressure__value {
+    @apply font-semibold xxs:text-[0.85rem] xs:text-[0.9rem] md:text-xl;
+}
+
+footer {
+    @apply h-[15%] flex justify-center items-end;
+}
+
+.weathernow__footer__text {
+    @apply font-semibold mb-4 xxs:text-[0.8rem];
+}
