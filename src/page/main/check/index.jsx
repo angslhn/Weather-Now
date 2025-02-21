@@ -1,87 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faWind, faGauge, faDroplet, faSun } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-import axios from "axios";
 
-const Main = () => {
-    const [data, setData] = useState(null)
-    const [imageSource, setImageSource] = useState(null)
-    const [location, setLocation] = useState(null)
-  
-    useEffect(() => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          async function fetchWeatherData() {
-            try {
-                const response = await axios.get(`https://api.weatherapi.com/v1/current.json`, {
-                    params: {
-                        key: import.meta.env.VITE_API_KEY,
-                        q: `${position.coords.latitude},${position.coords.longitude}`
-                    }
-                });
-
-                // setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
-                setData(response.data);
-            } catch {
-              throw new Error("Failed to get data!");
-            }
-          }
-
-          fetchWeatherData()
-        },
-        () => {
-          console.log("Gagal Mendapatkan Lokasi")
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 15000,
-          maximumAge: 0,
-        }
-      );
-    }, []);
-
-    useEffect(() => {
-        async function fetchImageWeatherSource () {
-            try {
-                const response = await axios.get('https://api-weathernow.vercel.app/image')
-                setImageSource(response.data[0].src)
-            } catch {
-                throw new Error("Failed to get data!")
-            }
-        }
-
-        fetchImageWeatherSource()
-    }, [data])
-
-    useEffect(() => {
-        const setCookie = (name, value, minutes) => {
-            const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
-            document.cookie = `${name}=${value}; expires=${expires}; path=/`;
-        };
-        
-        const getCookie = (name) => {
-            const cookies = document.cookie.split('; ');
-            const cookie = cookies.find(row => row.startsWith(`${name}=`));
-            return cookie ? cookie.split('=')[1] : null;
-        };
-
-        const fetchSaveLocation = async () => {
-            try {
-                const cookieName = 'location';
-        
-                if (getCookie(cookieName)) return;
-        
-                if (location) {
-                    await axios.post('https://api-weathernow.vercel.app/save', location);
-                    setCookie(cookieName, 'true', 5);
-                }
-            } catch {
-                console.error("A data error occurred!");
-            }
-        }
-
-        fetchSaveLocation()
-    }, [location])
+// eslint-disable-next-line react/prop-types
+const Main = ({ weather, image }) => {
+    const data = weather
+    const imageSource = image
 
     return (
         <main>
