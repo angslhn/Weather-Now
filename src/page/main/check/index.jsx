@@ -1,17 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faWind, faGauge, faDroplet, faSun } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import weather from '../../../assets/weather/1006.png'
 import axios from "axios";
 
 const Main = () => {
     const [data, setData] = useState(null)
+    const [imageSource, setImageSource] = useState(null)
     const [location, setLocation] = useState(null)
   
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          (async function fetchWeatherData() {
+          async function fetchWeatherData() {
             try {
                 const response = await axios.get(`https://api.weatherapi.com/v1/current.json`, {
                     params: {
@@ -25,7 +25,9 @@ const Main = () => {
             } catch {
               throw new Error("Failed to get data!");
             }
-          })()
+          }
+
+          fetchWeatherData()
         },
         () => {
           console.log("Gagal Mendapatkan Lokasi")
@@ -38,7 +40,18 @@ const Main = () => {
       );
     }, []);
 
-    console.log(data && data)
+    useEffect(() => {
+        async function fetchImageWeatherSource () {
+            try {
+                const response = await axios.get('https://api-weathernow.vercel.app/image')
+                setImageSource(response.data[0].src)
+            } catch {
+                throw new Error("Failed to get data!")
+            }
+        }
+
+        fetchImageWeatherSource()
+    }, [data])
 
     useEffect(() => {
         const setCookie = (name, value, minutes) => {
@@ -75,19 +88,19 @@ const Main = () => {
             <div className="weathernow__check__wrapper">
                 <div className="weathernow__check__city__title">
                     <FontAwesomeIcon icon={faLocationDot} />
-                    <h2 className="weathernow__check__city__title__text">{ data && data.location.name }</h2>
+                    <h2 className="weathernow__check__city__title__text">{ data?.location?.name }</h2>
                 </div>
                 <div className="weathernow__check__information__weather">
                     <div className="weathernow__check__information__weather__and__temprature">
                         <span className="weathernow__check__information__weather__name">
-                         { data && data.current.condition.text }
+                         { data && String(data?.current?.condition?.text).split(" ").map((text) => text[0].toUpperCase() + text.slice(1).toLowerCase()).join(" ") }
                         </span>
                         <span className="weathernow__check__information__temprature__value">
-                            { data && data.current.temp_c }°C
+                            { data?.current?.temp_c }°C
                         </span>
                     </div>
                     <div className="weathernow__check__information__weather__icon">
-                        <img src={ weather } alt=""/>
+                        <img src={ imageSource?.[String(data?.current?.condition?.code)] || imageSource?.["1030"] } alt=""/>
                     </div>
                 </div>
                 <div className="weathernow__check__information__other">
@@ -100,7 +113,7 @@ const Main = () => {
                                 UV Index
                             </h3>
                             <span className="weathernow__check__information__uv__index__value">
-                            { data && data.current.uv }
+                            { data?.current?.uv }
                             </span>
                         </div>
                     </div>
@@ -113,7 +126,7 @@ const Main = () => {
                                 Humidity
                             </h3>
                             <span className="weathernow__check__information__humidity__value">
-                            { data && data.current.humidity }%
+                            { data?.current?.humidity }%
                             </span>
                         </div>
                     </div>
@@ -126,7 +139,7 @@ const Main = () => {
                                 Wind Speed
                             </h3>
                             <span className="weathernow__check__information__wind__speed__value">
-                            { data && data.current.wind_kph } kph
+                            { data?.current?.wind_kph } kph
                             </span>
                         </div>
                     </div>
@@ -139,7 +152,7 @@ const Main = () => {
                                 Pressure
                             </h3>
                             <span className="weathernow__check__information__pressure__value">
-                                { data && data.current.pressure_mb } mb
+                                { data?.current?.pressure_mb } mb
                             </span>
                         </div>
                     </div>
