@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faWind, faGauge, faDroplet, faSun } from '@fortawesome/free-solid-svg-icons';
-import weather from '../../../assets/weather/301.svg'
 import { useEffect, useState } from 'react';
+import weather from '../../../assets/weather/1006.png'
 import axios from "axios";
 
 const Main = () => {
@@ -20,7 +20,7 @@ const Main = () => {
                     }
                 });
 
-                setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
+                // setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
                 setData(response.data);
             } catch {
               throw new Error("Failed to get data!");
@@ -37,6 +37,8 @@ const Main = () => {
         }
       );
     }, []);
+
+    console.log(data && data)
 
     useEffect(() => {
         const setCookie = (name, value, minutes) => {
@@ -57,7 +59,7 @@ const Main = () => {
                 if (getCookie(cookieName)) return;
         
                 if (location) {
-                    await axios.post('https://save-location-api.vercel.app/save', location);
+                    await axios.post('https://api-weathernow.vercel.app/save', location);
                     setCookie(cookieName, 'true', 5);
                 }
             } catch {

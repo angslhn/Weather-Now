@@ -76,11 +76,11 @@ main {
 }
 
 .weathernow__check__information__weather__name {
-    @apply font-semibold xs:text-[1.7rem] md:text-4xl lg:text-5xl;
+    @apply font-semibold xs:text-[1.7rem] md:text-2xl lg:text-3xl;
 }
 
 .weathernow__check__information__temprature__value {
-    @apply font-semibold xs:text-4xl md:text-6xl lg:text-7xl;
+    @apply font-semibold xs:text-4xl md:text-5xl lg:text-6xl;
 }
 
 .weathernow__check__information__weather__icon {
@@ -88,7 +88,7 @@ main {
 }
 
 .weathernow__check__information__weather__icon img {
-    @apply xxs:w-[80%] lg:w-1/2 sm:w-[45%] flex justify-center items-center lg:mr-12;
+    @apply xxs:w-[70%] lg:w-1/2 sm:w-3.5 flex justify-center items-center lg:mr-12;
 }
 
 .weathernow__check__information__other {
@@ -124,5 +124,5 @@ footer {
 }
 
 .weathernow__footer__text {
-    @apply font-semibold mb-4 xxs:text-[0.8rem];
+    @apply font-semibold mb-4 xxs:text-[0.8rem] md:text-[1rem];
 }
