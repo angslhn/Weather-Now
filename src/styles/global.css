@@ -44,7 +44,7 @@ main {
 }
 
 .button__to__check__text {
-    @apply font-kanit xxs:text-[1rem] md:text-[1.1rem] font-semibold;
+    @apply font-kanit xxs:text-[0.85rem] md:text-[1.1rem] font-semibold;
 }
 
 .button__back__to__home {
@@ -124,5 +124,5 @@ footer {
 }
 
 .weathernow__footer__text {
-    @apply font-semibold mb-4 xxs:text-[0.8rem] md:text-[1rem];
+    @apply font-semibold mb-4 xxs:text-[0.8rem] md:text-[0.9rem];
 }

@@ -113,7 +113,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       {
         (checkingLocation) ?
           <Loader/>
@@ -126,7 +126,7 @@ const Home = () => {
         :
           <Loader/>
         } 
-      <Footer />
+      <Footer/>
     </>
   );
 };
