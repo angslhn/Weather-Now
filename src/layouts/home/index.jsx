@@ -5,9 +5,9 @@ import Footer from "../../page/footer";
 const Home = () => {
   return (
     <>
-      <Header />
-      <Main  />
-      <Footer />
+      <Header/>
+      <Main/>
+      <Footer/>
     </>
   );
 };
