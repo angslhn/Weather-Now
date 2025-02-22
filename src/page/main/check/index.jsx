@@ -23,7 +23,7 @@ const Main = ({ weather, image }) => {
                         </span>
                     </div>
                     <div className="weathernow__check__information__weather__icon">
-                        <img src={ imageSource?.[String(data?.current?.condition?.code)] || imageSource?.["1030"] } alt=""/>
+                        <img src={ imageSource?.[String(data?.current?.condition?.code)] } alt="Icon Not Set."/>
                     </div>
                 </div>
                 <div className="weathernow__check__information__other">
