@@ -40,7 +40,7 @@ main {
 }
 
 .weathernow__home__information__to__check__description {
-    @apply xxs:text-[1rem] md:text-xl hyphens-auto leading-5 xxs:text-justify sm:text-center;
+    @apply xxs:text-[0.85rem] md:text-xl hyphens-auto leading-5 xxs:text-center;
 }
 
 .button__to__check__text {
