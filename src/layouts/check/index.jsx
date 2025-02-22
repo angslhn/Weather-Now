@@ -36,7 +36,7 @@ const Home = () => {
               }
             );
 
-            // setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
+            setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
             setData(response?.data);
           } catch {
             throw new Error("Failed to get data!");
