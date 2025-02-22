@@ -118,9 +118,11 @@ const Home = () => {
         (checkingLocation) ?
           <Loader/>
         : !locationAccess ?
-          <Alert variant='filled' severity="error">
-            Oops! Unable to get location access at this time.
-          </Alert>
+          <div className="w-[90%]">
+            <Alert variant='filled' severity="error">
+              Oops! Unable to get location access at this time.
+            </Alert>
+          </div>
         : (!loading.weather && !loading.image) ?
           <Main weather={data} image={imageSource} />
         :
